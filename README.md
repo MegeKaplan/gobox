@@ -40,45 +40,23 @@ gobox list
 
 ## Installation
 
-You can install gobox by downloading it from the releases section of this repository, or by building it directly from the source code.
+You can install gobox by downloading precompiled binary or by building it directly from source.
 
-### Install From Releases (Linux only)
+### Install on Linux (via Releases)
 
-Download the binary file and go to the download directory
 ```bash
-curl -L https://github.com/MegeKaplan/gobox/releases/download/latest/gobox -o gobox
-```
-
-Make it executable
-```bash
+curl -L https://github.com/MegeKaplan/gobox/releases/download/v1.1.0/gobox -o gobox
 chmod +x gobox
-```
-
-Move the binary file to `/usr/local/bin`
-```bash
 sudo mv gobox /usr/local/bin
 ```
 
-### Build From Source
+### Build from Source
 
-Clone the project repository
 ```bash
 git clone https://github.com/MegeKaplan/gobox
-```
-
-Navigate to the project directory
-```bash
 cd gobox
-```
-
-Build the project
-```bash
 go build -o ./bin/gobox
-```
-
-Move the binary file to `/usr/local/bin`
-```bash
-sudo mv ./bin/gobox /usr/local/bin
+sudo cp ./bin/gobox /usr/local/bin
 ```
 
 Now you can run gobox from anywhere in your terminal with `gobox`
