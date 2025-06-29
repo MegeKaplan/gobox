@@ -10,6 +10,7 @@ import (
 	"github.com/AlecAivazis/survey/v2"
 	"github.com/MegeKaplan/gobox/internal/messages"
 	"github.com/MegeKaplan/gobox/internal/storage"
+	"github.com/MegeKaplan/gobox/internal/utils"
 	"github.com/briandowns/spinner"
 	"github.com/fatih/color"
 	"github.com/spf13/cobra"
@@ -53,6 +54,8 @@ func runInitProject(cmd *cobra.Command, args []string) {
 	survey.AskOne(moduleNamePrompt, &moduleName)
 
 	packages, _ := storage.LoadPackages()
+
+	utils.SortPackages(&packages, "last_used", false)
 
 	os.MkdirAll(projectPath, 0755)
 	os.Chdir(projectPath)

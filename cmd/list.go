@@ -3,6 +3,7 @@ package cmd
 import (
 	"github.com/MegeKaplan/gobox/internal/messages"
 	"github.com/MegeKaplan/gobox/internal/storage"
+	"github.com/MegeKaplan/gobox/internal/utils"
 	"github.com/fatih/color"
 	"github.com/spf13/cobra"
 )
@@ -27,13 +28,17 @@ func runListPackages(cmd *cobra.Command, args []string) {
 		return
 	}
 
+	utils.SortPackages(&packages, "last_used", false)
+
 	cmd.Println(color.HiBlueString("Installed packages:"))
 	for i, pkg := range packages {
-		cmd.Printf("%s%d%s %s\n",
+		cmd.Printf("%s%d%s %s %s %s\n",
 			color.HiCyanString("["),
 			i+1,
 			color.HiCyanString("]"),
 			color.GreenString(pkg.Name),
+			color.MagentaString("last used:"),
+			color.HiMagentaString(pkg.LastUsed.Format("2006-01-02 15:04:05")),
 		)
 		cmd.Printf("     ↳ %s %s\n",
 			color.BlueString("Used"),

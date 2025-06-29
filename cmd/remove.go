@@ -4,6 +4,7 @@ import (
 	"github.com/AlecAivazis/survey/v2"
 	"github.com/MegeKaplan/gobox/internal/messages"
 	"github.com/MegeKaplan/gobox/internal/storage"
+	"github.com/MegeKaplan/gobox/internal/utils"
 	"github.com/fatih/color"
 	"github.com/spf13/cobra"
 )
@@ -27,6 +28,8 @@ func runRemovePackage(cmd *cobra.Command, args []string) {
 		cmd.Println(color.YellowString(messages.StatusNoPackagesFound))
 		return
 	}
+
+	utils.SortPackages(&packages, "last_used", true)
 
 	options := []string{}
 	for _, pkg := range packages {
