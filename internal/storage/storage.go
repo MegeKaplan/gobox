@@ -31,7 +31,7 @@ func Init() error {
 		return err
 	}
 
-	if err := os.MkdirAll(configDir, 0644); err != nil {
+	if err := os.MkdirAll(configDir, 0755); err != nil {
 		return err
 	}
 
@@ -144,5 +144,5 @@ func SaveAllPackages(pkgs []models.Package) error {
 		return err
 	}
 
-	return os.WriteFile(packagesFilePath, data, 0644)
+	return os.WriteFile(packagesFilePath, data, 0600)
 }
